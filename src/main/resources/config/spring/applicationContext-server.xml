@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/aop
                         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="netConfig" class="com.study.net.config.NetConfig">
+    <bean id="netConfig" class="com.leadDirec.net.config.NetConfig">
         <constructor-arg name="host" value="${im.gate.io.bind.host}"/>
         <constructor-arg name="port" value="${im.gate.io.bind.port}"/>
         <constructor-arg name="parameters">
@@ -23,23 +23,23 @@
         </constructor-arg>
     </bean>
 
-    <bean id="dispatcherContext" class="com.study.dispatcher.DispatcherContext">
+    <bean id="dispatcherContext" class="com.leadDirec.dispatcher.DispatcherContext">
         <constructor-arg name="packageNames">
             <list>
-                <value>com.study.gate.action</value>
+                <value>com.leadDirec.gate.action</value>
             </list>
         </constructor-arg>
     </bean>
 
-    <bean id="protocolCodecFactory" class="com.study.gate.net.codec.ProtocolCodecFactory" />
+    <bean id="protocolCodecFactory" class="com.leadDirec.gate.net.codec.ProtocolCodecFactory" />
 
-    <bean class="com.study.net.exchange.ExchangeServer" init-method="bind" destroy-method="destroy">
+    <bean class="com.leadDirec.net.exchange.ExchangeServer" init-method="bind" destroy-method="destroy">
         <constructor-arg name="netConfig" ref="netConfig" />
         <constructor-arg name="channelHandler" ref="dispatcherContext" />
         <constructor-arg name="codecFactory" ref="protocolCodecFactory" />
     </bean>
 
-    <bean id="executorChannelFilter" class="com.study.dispatcher.filter.ExecutorChannelFilter">
+    <bean id="executorChannelFilter" class="com.leadDirec.dispatcher.filter.ExecutorChannelFilter">
         <constructor-arg name="threads" value="${im.gate.service.executor.threads}" />
     </bean>
 
