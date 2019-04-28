@@ -2,3 +2,4 @@
 net包为netty配置包以及protobuf编解码，对读半包以及粘包等这些常用问题做了处理
 dispatcher包分发（集成了路由分发，filter/listener/voliate等功能）
 两块比较解耦，可分别拿去用
+该架子内部还缺少protobuf的model，有时间会补上
